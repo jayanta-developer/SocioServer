@@ -1,11 +1,32 @@
 const dotenv = require("dotenv");
 dotenv.config({ path: "./.env" });
 const cors = require("cors");
+const mongoose = require("mongoose");
 
 const express = require("express");
 
 //Routers
 const Router = require("./Router");
+
+//DB connection
+const DB = process.env.DATABASE.replace(
+  "<PASSWORD>",
+  process.env.DATABASE_PASSWORD
+);
+console.log(DB);
+
+mongoose
+  .connect(DB, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
+  .then(() => console.log("Database connected successful!"))
+  .catch((err) =>
+    console.log(
+      "Database is not concocted to the server, you are offline:",
+      err
+    )
+  );
 
 const App = express();
 App.use(express.json());
