@@ -1,4 +1,4 @@
-const Property = require("../Module/Flates");
+const Property = require("../Module/Flats");
 
 // Create a new property
 exports.createProperty = async (req, res) => {
@@ -24,7 +24,7 @@ exports.getAllProperties = async (req, res) => {
 // Get a property by ID
 exports.getPropertyById = async (req, res) => {
   try {
-    const property = await Property.findOne({ id: req.params.id });
+    const property = await Property.findById(req.params.id);
     if (!property) {
       return res.status(404).json({ message: "Property not found" });
     }
@@ -37,8 +37,8 @@ exports.getPropertyById = async (req, res) => {
 // Update a property by ID
 exports.updateProperty = async (req, res) => {
   try {
-    const updatedProperty = await Property.findOneAndUpdate(
-      { id: req.params.id },
+    const updatedProperty = await Property.findByIdAndUpdate(
+      req.params.id,
       req.body,
       { new: true }
     );
@@ -54,9 +54,7 @@ exports.updateProperty = async (req, res) => {
 // Delete a property by ID
 exports.deleteProperty = async (req, res) => {
   try {
-    const deletedProperty = await Property.findOneAndDelete({
-      id: req.params.id,
-    });
+    const deletedProperty = await Property.findByIdAndDelete(req.params.id);
     if (!deletedProperty) {
       return res.status(404).json({ message: "Property not found" });
     }

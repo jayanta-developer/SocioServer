@@ -12,11 +12,6 @@ const FacilitySchema = new mongoose.Schema({
 });
 
 const PropertySchema = new mongoose.Schema({
-  id: {
-    type: String,
-    required: true,
-    unique: true,
-  },
   title: {
     type: String,
     required: true,

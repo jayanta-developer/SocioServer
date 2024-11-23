@@ -13,13 +13,9 @@ const DB = process.env.DATABASE.replace(
   "<PASSWORD>",
   process.env.DATABASE_PASSWORD
 );
-console.log(DB);
 
 mongoose
-  .connect(DB, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  })
+  .connect(DB, {})
   .then(() => console.log("Database connected successful!"))
   .catch((err) =>
     console.log(
