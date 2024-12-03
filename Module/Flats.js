@@ -12,6 +12,11 @@ const FacilitySchema = new mongoose.Schema({
 });
 
 const PropertySchema = new mongoose.Schema({
+  id: {
+    type: String,
+    unique: true, // Ensure uniqueness
+    default: () => new mongoose.Types.ObjectId().toString(), // Auto-generate unique id
+  },
   title: {
     type: String,
     required: true,
