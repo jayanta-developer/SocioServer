@@ -1,16 +1,5 @@
 const mongoose = require("mongoose");
 
-const FacilitySchema = new mongoose.Schema({
-  icon: {
-    type: String, // Use String for URL or path reference to the icon
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-});
-
 const PropertySchema = new mongoose.Schema({
   id: {
     type: String,
@@ -69,7 +58,12 @@ const PropertySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  facilities: [FacilitySchema],
+  facilities: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
 });
 
 module.exports = mongoose.model("Property", PropertySchema);
