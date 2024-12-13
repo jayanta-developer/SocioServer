@@ -32,12 +32,14 @@ const PropertySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  map: [
-    {
-      type: Number,
-      required: true,
-    },
-  ],
+  mapLat: {
+    type: String,
+    required: true,
+  },
+  mapLong: {
+    type: String,
+    required: true,
+  },
   price: {
     type: String,
     required: true,
