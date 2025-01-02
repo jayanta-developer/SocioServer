@@ -60,6 +60,14 @@ const PropertySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  meta_title: {
+    type: String,
+    required: true,
+  },
+  meta_description: {
+    type: String,
+    required: true,
+  },
   rating: {
     type: Number,
     required: true,
