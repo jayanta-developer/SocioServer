@@ -16,8 +16,14 @@ const PropertySchema = new mongoose.Schema({
   },
   images: [
     {
-      type: String, // URL or path to the image
-      required: true,
+      image: {
+        type: String,
+        required: true,
+      },
+      altText: {
+        type: String,
+        required: true,
+      },
     },
   ],
   video: {
