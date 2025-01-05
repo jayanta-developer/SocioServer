@@ -24,6 +24,10 @@ const PropertySchema = new mongoose.Schema({
         type: String,
         required: true,
       },
+      imgId: {
+        type: String,
+        // required: true,
+      },
     },
   ],
   video: {
