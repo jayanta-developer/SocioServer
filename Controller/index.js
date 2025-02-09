@@ -1,5 +1,6 @@
 const Property = require("../Module/Flats");
 const Blog = require("../Module/Blogs");
+const User = require("../Module/User");
 
 // Create a new property
 exports.createProperty = async (req, res) => {
@@ -135,6 +136,32 @@ exports.deleteBlos = async (req, res) => {
       return res.status(404).json({ message: "Blog not found" });
     }
     res.status(200).json({ message: "Blog deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+///User controller
+exports.createUser = async (req, res) => {
+  try {
+    const user = User.create(req.body);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = User.find();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+exports.DeleteUser = async (req, res) => {
+  try {
+    const users = User.findByIdAndDelete(req.params.id);
+    res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

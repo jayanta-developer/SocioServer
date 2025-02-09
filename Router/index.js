@@ -12,6 +12,7 @@ const {
   updateBlogs,
   deleteBlos,
   getBlogById,
+  createUser,
 } = require("../Controller");
 
 //Flats
@@ -27,5 +28,8 @@ router.get("/blogs", getAllBlogs);
 router.get("/blog/:id", getBlogById);
 router.post("/blog/update/:id", updateBlogs);
 router.post("/blog/delete/:id", deleteBlos);
+
+//User
+router.post("/user/create", createUser);
 
 module.exports = router;
