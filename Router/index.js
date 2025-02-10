@@ -15,6 +15,9 @@ const {
   createUser,
   getAllUsers,
   DeleteUser,
+  createBanner,
+  updateBanner,
+  getBanner,
 } = require("../Controller");
 
 //Flats
@@ -35,5 +38,10 @@ router.post("/blog/delete/:id", deleteBlos);
 router.post("/user/create", createUser);
 router.get("/users", getAllUsers);
 router.post("/user/delete/:id", DeleteUser);
+
+//Banner
+router.post("/banner/create", createBanner);
+router.post("/banner/update/:id", updateBanner);
+router.get("/banner", getBanner);
 
 module.exports = router;

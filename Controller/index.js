@@ -1,6 +1,7 @@
 const Property = require("../Module/Flats");
 const Blog = require("../Module/Blogs");
 const User = require("../Module/User");
+const Banner = require("../Module/Banner");
 
 // Create a new property
 exports.createProperty = async (req, res) => {
@@ -162,6 +163,41 @@ exports.DeleteUser = async (req, res) => {
   try {
     await User.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: "User delete successfuly!" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+///Banner
+exports.createBanner = async (req, res) => {
+  try {
+    const banner = await Banner.create(req.body);
+    res.status(200).json(banner);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+exports.updateBanner = async (req, res) => {
+  try {
+    const updatedBanner = await Banner.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    if (!updatedBanner) {
+      return res.status(404).json({ message: "Banner is not found" });
+    }
+    res.status(200).json(updatedBanner);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+exports.getBanner = async (req, res) => {
+  try {
+    const banner = await Banner.find();
+    res.status(200).json(banner);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
